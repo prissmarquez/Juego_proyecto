@@ -148,6 +148,19 @@ def crear_matriz(level):
 root = tk.Tk()
 root.title("Titulo")
 
+# Instrucciones 
+instrucciones_label = tk.Label(
+    root,
+    text="Recuerda las casillas que contengan una X. "
+         "Tienes 5 segundos para memorizarlas antes de que desaparezcan.",
+    font=("Arial", 12),
+    wraplength=400,       # Ajusta el ancho 
+    justify="center",
+    fg="blue"
+)
+
+instrucciones_label.pack(pady=10)
+
 nivel = 1
 vidas = 3
 num_x = 0
