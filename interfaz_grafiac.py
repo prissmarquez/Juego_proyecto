@@ -40,7 +40,7 @@ def mostrar_matriz_x():
                 botones[i][j].config(bg="white", text="")
     root.update()
 
-     # Calcular tiempo de memorización
+    # Calcular tiempo de memorización
     # 5 segundos base + 1 segundo extra por cada incremento de tamaño
     dim = len(matriz)
     segundos_extra = (dim - 2) * 1000  # cada vez que la matriz crece, se suma 1s
@@ -141,8 +141,8 @@ def crear_matriz(level):
         fila_botones = []
         for j in range(dim):
             b = tk.Button(frame_matriz, width=4, height=2,
-                          command=lambda i=i, j=j: boton_click(i, j),
-                          state="disabled")  # Deshabilitados hasta mostrar X
+                        command=lambda i=i, j=j: boton_click(i, j),
+                        state="disabled")  # Deshabilitados hasta mostrar X
             b.grid(row=i, column=j, padx=5, pady=5)
             fila_botones.append(b)
         botones.append(fila_botones)
@@ -161,7 +161,7 @@ root.title("Color Search")
 instrucciones_label = tk.Label(
     root,
     text="Recuerda las casillas que contengan una X." 
-         "\nTienes 5 segundos para memorizarlas antes de que desaparezcan.",
+        "\nTienes 5 segundos para memorizarlas antes de que desaparezcan.",
     font=("Arial", 12),
     wraplength=400,       # Ajusta el ancho 
     justify="center",
