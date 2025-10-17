@@ -40,9 +40,14 @@ def mostrar_matriz_x():
                 botones[i][j].config(bg="white", text="")
     root.update()
 
-    # Tiempo de memorización
-    tiempo_memorizacion = 5000 + (nivel - 1) * 1000
+     # Calcular tiempo de memorización
+    # 5 segundos base + 1 segundo extra por cada incremento de tamaño
+    dim = len(matriz)
+    segundos_extra = (dim - 2) * 1000  # cada vez que la matriz crece, se suma 1s
+    tiempo_memorizacion = 5000 + segundos_extra
+
     root.after(tiempo_memorizacion, mostrar_matriz_vacia)
+
 
 def mostrar_matriz_vacia():
     """Vaciar la matriz y habilitar botones para jugar."""
