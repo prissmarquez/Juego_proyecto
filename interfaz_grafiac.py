@@ -30,15 +30,19 @@ def generar_matriz(level):
 
 def mostrar_matriz_x():
     """Mostrar las X al inicio para memorizar."""
+    # Bloquear todos los botones durante la fase de memorización
     for i in range(len(matriz)):
         for j in range(len(matriz)):
+            botones[i][j].config(state="disabled")
             if matriz[i][j]:
-                botones[i][j].config(bg="red", text="X", state="normal")  # habilitado para ver color
+                botones[i][j].config(bg="red", text="X")
             else:
-                botones[i][j].config(bg="white", text="", state="normal")
+                botones[i][j].config(bg="white", text="")
     root.update()
-    # Después de 5 segundos, vaciar la matriz y mantener habilitados los botones
-    root.after(5000, mostrar_matriz_vacia)
+
+    # Tiempo de memorización
+    tiempo_memorizacion = 5000 + (nivel - 1) * 1000
+    root.after(tiempo_memorizacion, mostrar_matriz_vacia)
 
 def mostrar_matriz_vacia():
     """Vaciar la matriz y habilitar botones para jugar."""
@@ -146,13 +150,13 @@ def crear_matriz(level):
 # ---------------- Interfaz gráfica ---------------- #
 
 root = tk.Tk()
-root.title("Titulo")
+root.title("Color Search")
 
 # Instrucciones 
 instrucciones_label = tk.Label(
     root,
-    text="Recuerda las casillas que contengan una X. "
-         "Tienes 5 segundos para memorizarlas antes de que desaparezcan.",
+    text="Recuerda las casillas que contengan una X." 
+         "\nTienes 5 segundos para memorizarlas antes de que desaparezcan.",
     font=("Arial", 12),
     wraplength=400,       # Ajusta el ancho 
     justify="center",
